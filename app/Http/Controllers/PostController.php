@@ -18,9 +18,14 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $post = new Post;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->image = $request->image;
+
     }
 
     /**
