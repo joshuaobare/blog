@@ -55,7 +55,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Request $request, string $id)
     {
         //
     }
@@ -63,7 +63,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(string $id, Request $request)
+    public function update(Request $request, string $id)
     {
         //
         $post = Post::find($id);
