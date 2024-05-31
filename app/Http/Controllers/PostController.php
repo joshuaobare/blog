@@ -13,6 +13,8 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts = Post::all();
+        return response()->json(array("posts" => $posts));
     }
 
     /**
@@ -23,8 +25,11 @@ class PostController extends Controller
         //
         $post = new Post;
         $post->title = $request->title;
-        $post->description = $request->description;
-        $post->image = $request->image;
+        $post->body = $request->body;
+        $post->author = $request->author;
+        $post->published = $request->published;
+        $post->save();
+        return response()->json(["message" => "Post created"]);
 
     }
 
@@ -39,9 +44,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(string $id)
     {
         //
+        $post = Post::find($id);
+
+        return response()->json(array("post" => $post));
     }
 
     /**
@@ -55,16 +63,28 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(string $id, Request $request)
     {
         //
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->author = $request->author;
+        $post->published = $request->published;
+        $post->save();
+
+        return response()->json(["message" => "Post successfully updated"]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(string $id)
     {
         //
+        $post = Post::find($id);
+        $post->delete();
+
+        return response()->json(["message" => "Post successfully deleted"]);
     }
 }
