@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class ProfileController extends Controller
+class ProfileController
 {
     /**
      * Display the user's profile form.
@@ -43,6 +43,7 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
+
     public function destroy(Request $request): RedirectResponse
     {
         $request->validate([
