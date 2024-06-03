@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         //
         $posts = Post::all();
-        return response()->json(array("posts" => $posts));
+        return $posts;
     }
 
     /**
