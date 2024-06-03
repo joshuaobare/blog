@@ -1,6 +1,8 @@
 import Card from "react-bootstrap/Card";
 import Post from "@/Interfaces/PostInterface";
+import { Link } from "@inertiajs/react";
 import { PageProps } from "@/types";
+import "../../css/postcard.css";
 
 const PostCard = ({ post }: PageProps<{ post: Post }>) => {
     return (
@@ -28,7 +30,7 @@ const PostCard = ({ post }: PageProps<{ post: Post }>) => {
                         <Card.Text>{post.body}</Card.Text>
                     </div>
 
-                    <Link to={`/posts/post/${post.id}`}>
+                    <Link href="#">
                         <Card.Link href="#">Read Post</Card.Link>
                     </Link>
                 </Card.Body>

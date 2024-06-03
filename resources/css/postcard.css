@@ -1,0 +1,12 @@
+.homepage-post-title {
+    height: 75px;
+    overflow: hidden;
+}
+.homepage-post-title > div {
+    font-weight: bolder;
+}
+.homepage-post-text {
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

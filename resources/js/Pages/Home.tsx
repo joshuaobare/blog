@@ -4,6 +4,7 @@ import Hero from "../Components/Hero";
 import NavBar from "../Components/NavBar";
 import "../../css/welcome.css";
 import Post from "@/Interfaces/PostInterface";
+import PostCard from "@/Components/PostCard";
 
 export default function Home({
     auth,
@@ -12,9 +13,19 @@ export default function Home({
     return (
         <>
             <NavBar auth={auth} />
-            <main className="welcome-main">
+            <main className="home-main">
                 <h1>All Posts</h1>
-                <div className="posts-grid"></div>
+                <div className="home-posts-grid">
+                    {posts.map((post) => (
+                        <PostCard
+                            key={post.id}
+                            post={post}
+                            auth={{
+                                user: auth.user,
+                            }}
+                        />
+                    ))}
+                </div>
             </main>
         </>
     );
