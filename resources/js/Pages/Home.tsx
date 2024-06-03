@@ -4,7 +4,7 @@ import Hero from "../Components/Hero";
 import NavBar from "../Components/NavBar";
 import "../../css/welcome.css";
 
-interface Posts {
+interface Post {
     id: number;
     title: string;
     body: string;
@@ -17,8 +17,7 @@ interface Posts {
 export default function Home({
     auth,
     posts,
-}: PageProps<{ laravelVersion: string; phpVersion: string; posts: Posts[] }>) {
-    console.log(posts);
+}: PageProps<{ laravelVersion: string; phpVersion: string; posts: Post[] }>) {
     return (
         <>
             <NavBar auth={auth} />
