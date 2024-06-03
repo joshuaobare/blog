@@ -16,6 +16,9 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/post/{id}', function () {
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
