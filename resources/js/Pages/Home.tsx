@@ -4,10 +4,20 @@ import Hero from "../Components/Hero";
 import NavBar from "../Components/NavBar";
 import "../../css/welcome.css";
 
+interface Posts {
+    id: number;
+    title: string;
+    body: string;
+    author_name: string;
+    created_at: string;
+    published: boolean;
+    updated_at: string;
+}
+
 export default function Home({
     auth,
     posts,
-}: PageProps<{ laravelVersion: string; phpVersion: string }>) {
+}: PageProps<{ laravelVersion: string; phpVersion: string; posts: Posts[] }>) {
     console.log(posts);
     return (
         <>
