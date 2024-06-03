@@ -1,7 +1,17 @@
 import Post from "@/Interfaces/PostInterface";
 import { PageProps } from "@/types";
+import { useState } from "react";
 
 const FullPost = ({ postData }: PageProps<{ postData: Post }>) => {
+    const [newComment, setNewComment] = useState({ body: "", postId: "" });
+
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        e.preventDefault();
+        setNewComment((prevState) => {
+            return { ...prevState, [e.target.name]: e.target.value };
+        });
+    };
+
     return (
         <div className="full-post">
             <h1>{postData.title}</h1>
@@ -42,8 +52,7 @@ const FullPost = ({ postData }: PageProps<{ postData: Post }>) => {
                     </label>
                     <textarea
                         onChange={handleChange}
-                        value={newComment.text}
-                        type="text"
+                        value={newComment.body}
                         className="form-control text"
                         name="text"
                         id="text"
