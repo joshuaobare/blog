@@ -3,16 +3,7 @@ import { PageProps } from "@/types";
 import Hero from "../Components/Hero";
 import NavBar from "../Components/NavBar";
 import "../../css/welcome.css";
-
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-    author_name: string;
-    created_at: string;
-    published: boolean;
-    updated_at: string;
-}
+import Post from "@/Interfaces/PostInterface";
 
 export default function Home({
     auth,

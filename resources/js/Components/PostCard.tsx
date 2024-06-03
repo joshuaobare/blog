@@ -1,5 +1,8 @@
 import Card from "react-bootstrap/Card";
-const PostCard = ({ post }) => {
+import Post from "@/Interfaces/PostInterface";
+import { PageProps } from "@/types";
+
+const PostCard = ({ post }: PageProps<{ post: Post }>) => {
     return (
         <div>
             <Card style={{ width: "18rem" }}>
@@ -8,9 +11,9 @@ const PostCard = ({ post }) => {
                         <Card.Title>{post.title}</Card.Title>
                     </div>
                     <Card.Subtitle className="mb-2 text-muted">
-                        <div>{post.authorId}</div>
+                        <div>{post.author_name}</div>
                         <div>
-                            {new Date(post.timestamp).toLocaleDateString(
+                            {new Date(post.created_at).toLocaleDateString(
                                 "en-us",
                                 {
                                     weekday: "long",
@@ -22,10 +25,10 @@ const PostCard = ({ post }) => {
                         </div>
                     </Card.Subtitle>
                     <div className="homepage-post-text">
-                        <Card.Text>{post.text}</Card.Text>
+                        <Card.Text>{post.body}</Card.Text>
                     </div>
 
-                    <Link to={`/posts/post/${post._id}`}>
+                    <Link to={`/posts/post/${post.id}`}>
                         <Card.Link href="#">Read Post</Card.Link>
                     </Link>
                 </Card.Body>
