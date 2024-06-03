@@ -1,15 +1,23 @@
 import Post from "@/Interfaces/PostInterface";
+import { router } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import { useState } from "react";
 
 const FullPost = ({ postData }: PageProps<{ postData: Post }>) => {
     const [newComment, setNewComment] = useState({ body: "", postId: "" });
 
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+    ) => {
         e.preventDefault();
         setNewComment((prevState) => {
             return { ...prevState, [e.target.name]: e.target.value };
         });
+    };
+
+    const handleSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        router.post("", newComment);
     };
 
     return (
