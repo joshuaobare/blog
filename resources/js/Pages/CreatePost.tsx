@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { router } from "@inertiajs/react";
 
 const CreatePost = () => {
     const [formData, setFormData] = useState({
@@ -7,7 +8,10 @@ const CreatePost = () => {
         published: false,
         authorName: "",
     });
-    const handleSubmit = () => {};
+    const handleSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        router.post("", formData);
+    };
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -17,7 +21,12 @@ const CreatePost = () => {
         setFormData((prevState) => {
             return {
                 ...prevState,
-                [name]: type === "radio" ? eval(value) : value,
+                [name]:
+                    type === "radio"
+                        ? value === "true"
+                            ? true
+                            : false
+                        : value,
             };
         });
     };
