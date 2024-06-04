@@ -20,7 +20,8 @@ Route::get('/', function () {
 Route::get('/post/{id}', function ($id) {
 
     return Inertia::render('FullPost', [
-        'auth' => Route::has('login'),
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
         'postData' => (new PostController)->show($id),
         'postComments' => (new CommentController)->allPostComments($id),
     ]);
