@@ -80,7 +80,7 @@ const FullPost = ({
                         name="text"
                         id="text"
                     ></textarea>
-                    <input type="hidden" name="postId" value={id} />
+                    <input type="hidden" name="postId" value={postData.id} />
                 </div>
                 <div className="form-group">
                     <button className="btn btn-primary">Submit</button>

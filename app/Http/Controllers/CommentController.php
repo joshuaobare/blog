@@ -18,6 +18,13 @@ class CommentController extends Controller
 
     }
 
+    public function allPostComments(string $id)
+    {
+        $comments = Comment::where("postId", $id)->get();
+        return $comments;
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

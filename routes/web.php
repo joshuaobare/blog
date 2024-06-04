@@ -16,7 +16,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/post/{id}', function () {
+Route::get('/post/{id}', function ($id) {
+    return Inertia::render('FullPost', [
+        'auth'=> Route::has('login'),
+        'postData'=> (new PostController)->show($id),
+        'postComments'=> Route::has(''),
+    ])
 });
 
 Route::get('/dashboard', function () {
