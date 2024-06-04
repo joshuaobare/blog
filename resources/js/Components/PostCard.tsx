@@ -30,7 +30,7 @@ const PostCard = ({ post }: PageProps<{ post: Post }>) => {
                         <Card.Text>{post.body}</Card.Text>
                     </div>
 
-                    <Link href="#">
+                    <Link href={route(`post.id`, [post.id])}>
                         <Card.Link href="#">Read Post</Card.Link>
                     </Link>
                 </Card.Body>

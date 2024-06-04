@@ -24,7 +24,7 @@ Route::get('/post/{id}', function ($id) {
         'postData' => (new PostController)->show($id),
         'postComments' => (new CommentController)->allPostComments($id),
     ]);
-});
+})->name('post.id');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
