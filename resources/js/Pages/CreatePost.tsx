@@ -1,6 +1,26 @@
+import { useState } from "react";
+
 const CreatePost = () => {
+    const [formData, setFormData] = useState({
+        title: "",
+        body: "",
+        published: false,
+        authorName: "",
+    });
     const handleSubmit = () => {};
-    const handleChange = () => {};
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { value, name, type } = e.target;
+
+        setFormData((prevState) => {
+            return {
+                ...prevState,
+                [name]: type === "radio" ? eval(value) : value,
+            };
+        });
+    };
 
     return (
         <div className="create-post">
@@ -21,10 +41,9 @@ const CreatePost = () => {
                     <label htmlFor="text">Text</label>
                     <textarea
                         className="form-control"
-                        type="text"
                         name="text"
                         id="text"
-                        value={formData.text}
+                        value={formData.body}
                         onChange={handleChange}
                     />
                 </div>
@@ -35,14 +54,14 @@ const CreatePost = () => {
                         <input
                             type="radio"
                             onChange={handleChange}
-                            value={true}
+                            value="true"
                             name="published"
                             id="published"
                         />
                         <label htmlFor="unpublished">No</label>
                         <input
                             type="radio"
-                            value={false}
+                            value="false"
                             name="published"
                             id="unpublished"
                             onChange={handleChange}
