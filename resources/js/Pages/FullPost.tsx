@@ -1,14 +1,19 @@
 import Post from "@/Interfaces/PostInterface";
-import Comment from "@/Interfaces/CommentInterface";
+import Comments from "@/Interfaces/CommentInterface";
 import { router } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import { useState } from "react";
+import Comment from "@/Components/Comment";
 
 const FullPost = ({
+    auth,
     postData,
     postComments,
-}: PageProps<{ postData: Post; postComments: Comment }>) => {
-    const [newComment, setNewComment] = useState({ body: "", postId: "" });
+}: PageProps<{ postData: Post; postComments: Comments[] }>) => {
+    const [newComment, setNewComment] = useState({
+        body: "",
+        postId: postData.id,
+    });
 
     const handleChange = (
         e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -46,7 +51,13 @@ const FullPost = ({
             <div className="full-post-comments">
                 {postComments.length !== 0 ? (
                     postComments.map((comment) => (
-                        <Comment key={comment._id} comment={comment} />
+                        <Comment
+                            key={comment.id}
+                            comment={comment}
+                            auth={{
+                                user: auth.user,
+                            }}
+                        />
                     ))
                 ) : (
                     <div>No Comments</div>
