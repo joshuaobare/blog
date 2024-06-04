@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -17,11 +18,12 @@ Route::get('/', function () {
 });
 
 Route::get('/post/{id}', function ($id) {
+
     return Inertia::render('FullPost', [
-        'auth'=> Route::has('login'),
-        'postData'=> (new PostController)->show($id),
-        'postComments'=> Route::has(''),
-    ])
+        'auth' => Route::has('login'),
+        'postData' => (new PostController)->show($id),
+        'postComments' => (new CommentController)->allPostComments($id),
+    ]);
 });
 
 Route::get('/dashboard', function () {
