@@ -17,16 +17,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/post/{id}', function ($id) {
-
-    return Inertia::render('FullPost', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'postData' => (new PostController)->show($id),
-        'postComments' => (new CommentController)->allPostComments($id),
-    ]);
-})->name('post.id');
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -36,5 +26,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/post/{id}', function ($id) {
+    return Inertia::render('FullPost', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'postData' => (new PostController)->show($id),
+        'postComments' => (new CommentController)->allPostComments($id),
+    ]);
+})->name('post.id');
+
+Route::post('/comment', [CommentController::class, "create"])->name('comment.post');
 
 require __DIR__ . '/auth.php';

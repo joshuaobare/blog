@@ -1,8 +1,15 @@
+.full-post-cont {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 .full-post-form {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
+.full-post-header {
+    text-align: center;
+}
 .full-post-text {
     width: 60vw;
 }

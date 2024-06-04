@@ -28,78 +28,79 @@ const FullPost = ({
 
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        router.post("", newComment);
+        router.post("comment.post", newComment);
     };
-    console.log(auth);
 
     return (
         <>
             <NavBar auth={auth} />
-            <div className="full-post">
-                <h1>{postData.title}</h1>
-                <div className="full-post-byline">
-                    <div>
-                        <b>{postData.author_name}</b>{" "}
-                        <span className="full-post-author-span">
-                            Contributor
-                        </span>{" "}
+            <div className="full-post-cont">
+                <div className="full-post">
+                    <h1 className="full-post-header">{postData.title}</h1>
+                    <div className="full-post-byline">
+                        <div>
+                            <b>{postData.author_name}</b>{" "}
+                            <span className="full-post-author-span">
+                                Contributor
+                            </span>{" "}
+                        </div>
+                        <div className="full-post-author-span">
+                            {new Date(postData.created_at).toLocaleDateString(
+                                "en-us",
+                                {
+                                    weekday: "long",
+                                    year: "numeric",
+                                    month: "short",
+                                    day: "numeric",
+                                }
+                            )}
+                        </div>
                     </div>
-                    <div className="full-post-author-span">
-                        {new Date(postData.created_at).toLocaleDateString(
-                            "en-us",
-                            {
-                                weekday: "long",
-                                year: "numeric",
-                                month: "short",
-                                day: "numeric",
-                            }
+                    <p className="full-post-text">{postData.body}</p>
+                    <h3>Comments</h3>
+                    <div className="full-post-comments">
+                        {postComments.length !== 0 ? (
+                            postComments.map((comment) => (
+                                <Comment
+                                    key={comment.id}
+                                    comment={comment}
+                                    auth={{
+                                        user: auth.user,
+                                    }}
+                                />
+                            ))
+                        ) : (
+                            <div>No Comments</div>
                         )}
                     </div>
-                </div>
-                <p className="full-post-text">{postData.body}</p>
-                <h3>Comments</h3>
-                <div className="full-post-comments">
-                    {postComments.length !== 0 ? (
-                        postComments.map((comment) => (
-                            <Comment
-                                key={comment.id}
-                                comment={comment}
-                                auth={{
-                                    user: auth.user,
-                                }}
-                            />
-                        ))
-                    ) : (
-                        <div>No Comments</div>
-                    )}
-                </div>
 
-                <form
-                    onSubmit={handleSubmit}
-                    className="full-post-form"
-                    method="post"
-                >
-                    <div className="form-group">
-                        <label htmlFor="text">
-                            <b>Add Comment</b>
-                        </label>
-                        <textarea
-                            onChange={handleChange}
-                            value={newComment.body}
-                            className="form-control text"
-                            name="text"
-                            id="text"
-                        ></textarea>
-                        <input
-                            type="hidden"
-                            name="postId"
-                            value={postData.id}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <button className="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+                    <form
+                        onSubmit={handleSubmit}
+                        className="full-post-form"
+                        method="post"
+                    >
+                        <div className="form-group">
+                            <label htmlFor="text">
+                                <b>Add Comment</b>
+                            </label>
+                            <textarea
+                                onChange={handleChange}
+                                value={newComment.body}
+                                className="form-control text"
+                                name="text"
+                                id="text"
+                            ></textarea>
+                            <input
+                                type="hidden"
+                                name="postId"
+                                value={postData.id}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <button className="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     );

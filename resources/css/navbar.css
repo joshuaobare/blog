@@ -10,3 +10,8 @@
 .navbar-links {
     color: white;
 }
+
+.navbar-home {
+    text-decoration: none;
+    color: white;
+}
