@@ -26,9 +26,15 @@ const FullPost = ({
         });
     };
 
-    const handleSubmit = (e: React.SyntheticEvent) => {
+    const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
-        router.post("/comment", newComment);
+        router.post("/comment", newComment, {
+            onSuccess: () =>
+                setNewComment({
+                    body: "",
+                    postId: postData.id,
+                }),
+        });
     };
 
     return (
