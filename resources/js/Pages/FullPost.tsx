@@ -28,7 +28,7 @@ const FullPost = ({
 
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        router.post("comment.post", newComment);
+        router.post("/comment", newComment);
     };
 
     return (
@@ -87,7 +87,7 @@ const FullPost = ({
                                 onChange={handleChange}
                                 value={newComment.body}
                                 className="form-control text"
-                                name="text"
+                                name="body"
                                 id="text"
                             ></textarea>
                             <input

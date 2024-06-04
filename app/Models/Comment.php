@@ -11,11 +11,11 @@ class Comment extends Model
     use HasFactory;
     protected $table = "comments";
     protected $fillable = [
-        "title",
+        "body",
         "postId",
     ];
-    public function user()
-    {
-        return $this->belongsTo(Post::class);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(Post::class);
+    // }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class CommentController extends Controller
 {
@@ -32,11 +34,10 @@ class CommentController extends Controller
     {
         //
         $comment = new Comment();
-        $comment->title = $request->title;
         $comment->body = $request->body;
-        $comment->user_id = auth()->user()->id;
+        $comment->postId = $request->postId;
         $comment->save();
-        return response()->json(array("comment" => $comment, "message" => "Comment successfully created"));
+        return Redirect::route("post.id", [$request->postId]);
 
     }
 
