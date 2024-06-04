@@ -1,9 +1,13 @@
 import Post from "@/Interfaces/PostInterface";
+import Comment from "@/Interfaces/CommentInterface";
 import { router } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import { useState } from "react";
 
-const FullPost = ({ postData }: PageProps<{ postData: Post }>) => {
+const FullPost = ({
+    postData,
+    postComments,
+}: PageProps<{ postData: Post; postComments: Comment }>) => {
     const [newComment, setNewComment] = useState({ body: "", postId: "" });
 
     const handleChange = (
