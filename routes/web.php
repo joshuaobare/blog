@@ -27,6 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/post/new', function () {
+    return Inertia::render('CreatePost');
+})->name('post.new');
+
 Route::get('/post/{id}', function ($id) {
     return Inertia::render('FullPost', [
         'canLogin' => Route::has('login'),
