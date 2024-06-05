@@ -8,11 +8,19 @@ const CreatePost = ({ auth }: PageProps<{ auth: any }>) => {
         title: "",
         body: "",
         published: false,
-        authorName: "",
+        authorName: auth.user.name,
     });
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        router.post("", formData);
+        router.post("/post/new", formData, {
+            onSuccess: () =>
+                setFormData({
+                    title: "",
+                    body: "",
+                    published: false,
+                    authorName: auth.user.name,
+                }),
+        });
     };
 
     const handleChange = (

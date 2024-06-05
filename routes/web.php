@@ -43,6 +43,8 @@ Route::get('/post/{id}', function ($id) {
     ]);
 })->name('post.id');
 
+Route::post('/post/new', [PostController::class, "create"])->name('post.new');
+
 Route::post('/comment', [CommentController::class, "create"])->name('comment.post');
 
 require __DIR__ . '/auth.php';
