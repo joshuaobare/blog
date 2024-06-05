@@ -6,6 +6,7 @@ import { PageProps } from "@/types";
 import { useState } from "react";
 import Comment from "@/Components/Comment";
 import "../../css/fullpost.css";
+import { Link } from "@inertiajs/react";
 
 const FullPost = ({
     auth,
@@ -62,6 +63,20 @@ const FullPost = ({
                             )}
                         </div>
                     </div>
+                    {auth.user.name === postData.author_name ? (
+                        <div className="edit-delete-btns-cont-cont">
+                            <div className="edit-delete-btns-cont">
+                                <Link href="" className="btn btn-primary">
+                                    Edit Post
+                                </Link>
+                                <Link href="" className="btn btn-danger">
+                                    Delete Post
+                                </Link>
+                            </div>
+                        </div>
+                    ) : (
+                        ""
+                    )}
                     <p className="full-post-text">{postData.body}</p>
                     <h3>Comments</h3>
                     <div className="full-post-comments">
