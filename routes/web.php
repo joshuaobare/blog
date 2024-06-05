@@ -28,7 +28,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/post/new', function () {
-    return Inertia::render('CreatePost');
+    return Inertia::render('CreatePost', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register')
+    ]);
 })->name('post.new');
 
 Route::get('/post/{id}', function ($id) {

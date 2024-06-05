@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { router } from "@inertiajs/react";
+import NavBar from "@/Components/NavBar";
+import { PageProps } from "@/types";
 
-const CreatePost = () => {
+const CreatePost = ({ auth }: PageProps<{ auth: any }>) => {
     const [formData, setFormData] = useState({
         title: "",
         body: "",
@@ -33,6 +35,7 @@ const CreatePost = () => {
 
     return (
         <div className="create-post">
+            <NavBar auth={auth} />
             <h1>Create Post</h1>
             <form method="post" onSubmit={handleSubmit}>
                 <div className="form-group">

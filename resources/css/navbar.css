@@ -6,7 +6,10 @@
     color: white;
     background-color: black;
 }
-
+.navbar-left {
+    display: flex;
+    gap: 10px;
+}
 .navbar-links {
     color: white;
 }

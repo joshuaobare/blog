@@ -9,13 +9,13 @@ interface NavBarProps {
 const NavBar: FC<NavBarProps> = ({ auth }) => {
     return (
         <nav className="navbar">
-            <div>
+            <div className="navbar-left">
                 <Link href="/" className="navbar-home">
                     <div>The Voice</div>
                 </Link>
                 {auth.user ? (
-                    <Link href="">
-                        <div></div>
+                    <Link href="/post/new">
+                        <div>Create Post</div>
                     </Link>
                 ) : (
                     ""

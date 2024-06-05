@@ -6,10 +6,7 @@ import "../../css/welcome.css";
 import Post from "@/Interfaces/PostInterface";
 import PostCard from "@/Components/PostCard";
 
-export default function Home({
-    auth,
-    posts,
-}: PageProps<{ laravelVersion: string; phpVersion: string; posts: Post[] }>) {
+export default function Home({ auth, posts }: PageProps<{ posts: Post[] }>) {
     return (
         <>
             <NavBar auth={auth} />
