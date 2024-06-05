@@ -34,6 +34,16 @@ Route::get('/post/new', function () {
     ]);
 })->name('post.new');
 
+Route::get('/post/edit/{id}', function ($id) {
+    return Inertia::render('EditPost', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'postData' => (new PostController)->show($id),
+    ]);
+})->name('post.edit');
+
+Router::post('/post/edit/{id}', function ())
+
 Route::get('/post/{id}', function ($id) {
     return Inertia::render('FullPost', [
         'canLogin' => Route::has('login'),
