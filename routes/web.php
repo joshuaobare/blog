@@ -42,8 +42,6 @@ Route::get('/post/edit/{id}', function ($id) {
     ]);
 })->name('post.edit');
 
-Router::post('/post/edit/{id}', function ())
-
 Route::get('/post/{id}', function ($id) {
     return Inertia::render('FullPost', [
         'canLogin' => Route::has('login'),
@@ -52,6 +50,8 @@ Route::get('/post/{id}', function ($id) {
         'postComments' => (new CommentController)->allPostComments($id),
     ]);
 })->name('post.id');
+
+Route::put('/post/edit', [PostController::class, 'update'])->name('post.edit');
 
 Route::post('/post/new', [PostController::class, "create"])->name('post.new');
 

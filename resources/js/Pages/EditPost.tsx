@@ -46,7 +46,11 @@ const EditPost = ({
         });
     };
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        if (auth.user.name !== postData.author_name) {
+            router.visit("/");
+        }
+    }, []);
     return (
         <div className="create-post-cont">
             <NavBar auth={auth} />
