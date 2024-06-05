@@ -15,7 +15,7 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
         'posts' => (new PostController)->index(),
     ]);
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

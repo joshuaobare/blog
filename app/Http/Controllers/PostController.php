@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
@@ -26,11 +27,10 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->author = $request->author;
+        $post->author_name = $request->author_name;
         $post->published = $request->published;
         $post->save();
-        return response()->json(["message" => "Post created"]);
-
+        return Redirect::route("home");
     }
 
     /**
