@@ -72,22 +72,28 @@ const CreatePost = ({ auth }: PageProps<{ auth: any }>) => {
                     <div className="form-group">
                         <fieldset>
                             <legend>published</legend>
-                            <label htmlFor="published">Yes</label>
-                            <input
-                                type="radio"
-                                onChange={handleChange}
-                                value="true"
-                                name="published"
-                                id="published"
-                            />
-                            <label htmlFor="unpublished">No</label>
-                            <input
-                                type="radio"
-                                value="false"
-                                name="published"
-                                id="unpublished"
-                                onChange={handleChange}
-                            />
+                            <div className="published-radios-cont">
+                                <div className="published-radio">
+                                    <label htmlFor="published">Yes</label>
+                                    <input
+                                        type="radio"
+                                        onChange={handleChange}
+                                        value="true"
+                                        name="published"
+                                        id="published"
+                                    />
+                                </div>
+                                <div className="published-radio">
+                                    <label htmlFor="unpublished">No</label>
+                                    <input
+                                        type="radio"
+                                        value="false"
+                                        name="published"
+                                        id="unpublished"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
                         </fieldset>
                     </div>
                     <div className="form-group">

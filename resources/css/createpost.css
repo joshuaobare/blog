@@ -5,3 +5,16 @@
     margin-top: 10px;
     align-items: center;
 }
+
+.published-radios-cont {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.published-radio {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
