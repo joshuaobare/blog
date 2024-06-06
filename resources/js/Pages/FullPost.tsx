@@ -66,7 +66,10 @@ const FullPost = ({
                     {auth.user && auth.user.name === postData.author_name ? (
                         <div className="edit-delete-btns-cont-cont">
                             <div className="edit-delete-btns-cont">
-                                <Link href="" className="btn btn-primary">
+                                <Link
+                                    href={route("post.edit.get", [postData.id])}
+                                    className="btn btn-primary"
+                                >
                                     Edit Post
                                 </Link>
                                 <Link href="" className="btn btn-danger">

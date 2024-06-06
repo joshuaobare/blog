@@ -68,11 +68,11 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->author = $request->author;
+        $post->author_name = $request->author_name;
         $post->published = $request->published;
         $post->save();
 
-        return response()->json(["message" => "Post successfully updated"]);
+        return Redirect::route("post.id", [$request->postId]);
     }
 
     /**
@@ -84,6 +84,6 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        return response()->json(["message" => "Post successfully deleted"]);
+        return Redirect::route("home");
     }
 }

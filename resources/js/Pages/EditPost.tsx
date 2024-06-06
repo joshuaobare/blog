@@ -17,7 +17,7 @@ const EditPost = ({
     });
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        router.post("/post/new", formData, {
+        router.put(`/post/edit/${postData.id}`, formData, {
             onSuccess: () =>
                 setFormData({
                     title: "",

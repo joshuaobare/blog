@@ -40,7 +40,7 @@ Route::get('/post/edit/{id}', function ($id) {
         'canRegister' => Route::has('register'),
         'postData' => (new PostController)->show($id),
     ]);
-})->name('post.edit');
+})->name('post.edit.get');
 
 Route::get('/post/{id}', function ($id) {
     return Inertia::render('FullPost', [
@@ -51,7 +51,7 @@ Route::get('/post/{id}', function ($id) {
     ]);
 })->name('post.id');
 
-Route::put('/post/edit', [PostController::class, 'update'])->name('post.edit');
+Route::put('/post/edit/{id}', [PostController::class, 'update'])->name('post.edit.put');
 
 Route::post('/post/new', [PostController::class, "create"])->name('post.new');
 
