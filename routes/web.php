@@ -53,6 +53,8 @@ Route::get('/post/{id}', function ($id) {
 
 Route::put('/post/edit/{id}', [PostController::class, 'update'])->name('post.edit.put');
 
+Route::delete('/post/delete/{id}', [PostController::class, 'destroy'])->name('post.delete');
+
 Route::post('/post/new', [PostController::class, "create"])->name('post.new');
 
 Route::post('/comment', [CommentController::class, "create"])->name('comment.post');
