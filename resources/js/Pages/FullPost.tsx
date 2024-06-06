@@ -37,6 +37,10 @@ const FullPost = ({
                 }),
         });
     };
+
+    const deleteHandler = () => {
+        router.delete(`/post/delete/${postData.id}`);
+    };
     console.log(auth);
     return (
         <>
@@ -72,9 +76,13 @@ const FullPost = ({
                                 >
                                     Edit Post
                                 </Link>
-                                <Link href="" className="btn btn-danger">
+
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={deleteHandler}
+                                >
                                     Delete Post
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     ) : (
