@@ -37,7 +37,7 @@ const FullPost = ({
                 }),
         });
     };
-
+    console.log(auth);
     return (
         <>
             <NavBar auth={auth} />
@@ -63,7 +63,7 @@ const FullPost = ({
                             )}
                         </div>
                     </div>
-                    {auth.user.name === postData.author_name ? (
+                    {auth.user && auth.user.name === postData.author_name ? (
                         <div className="edit-delete-btns-cont-cont">
                             <div className="edit-delete-btns-cont">
                                 <Link href="" className="btn btn-primary">
